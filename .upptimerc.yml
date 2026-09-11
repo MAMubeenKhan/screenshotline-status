@@ -32,11 +32,11 @@ status-website:
   logoUrl: https://raw.githubusercontent.com/MAMubeenKhan/screenshotline-status/master/assets/screenshotline.svg
   name: Screenshotline Status
   introTitle: "**Screenshotline** - live status"
-  introMessage: Checked every five minutes from GitHub's servers, not ours. **Screenshot rendering** takes a real capture; the others confirm each service is answering. [Back to screenshotline.com](https://screenshotline.com)
+  introMessage: Checked every five minutes from GitHub's servers, not ours. **Screenshot rendering** takes a real capture; the others confirm each service is answering. [Back to screenshotline.com](https://screenshotline.com/?ref=status)
   navbar:
     - title: Status
       href: /
     - title: screenshotline.com
-      href: https://screenshotline.com
+      href: https://screenshotline.com/?ref=status
     - title: Docs
-      href: https://screenshotline.com/docs
+      href: https://screenshotline.com/docs?ref=status
