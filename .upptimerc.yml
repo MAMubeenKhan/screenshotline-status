@@ -1,31 +1,42 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+owner: MAMubeenKhan
+repo: screenshotline-status
 
+# Checked every 5 minutes from GitHub's servers - not from ours, so this page
+# stays up and truthful when the Screenshotline box is down.
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: Website
+    url: https://screenshotline.com
+  # A real capture, not a ping: /healthz/render renders example.com through
+  # the production pool (at most once a minute, cached for everyone else).
+  # A green here means screenshots are actually being taken.
+  - name: Screenshot rendering
+    url: https://screenshotline.com/healthz/render
+    maxResponseTime: 30000
+  # 401 is the healthy answer: the API is up and refusing a request with no
+  # key, without spending a render on the check.
+  - name: API
+    url: https://api.screenshotline.com/take?url=example.com
+    expectedStatusCodes:
+      - 401
+  # 405 is the healthy answer: the MCP endpoint is up and only accepts POST.
+  - name: MCP server
+    url: https://api.screenshotline.com/mcp
+    expectedStatusCodes:
+      - 405
+
+assignees:
+  - MAMubeenKhan
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  cname: status.screenshotline.com
+  logoUrl: https://raw.githubusercontent.com/MAMubeenKhan/screenshotline-status/master/assets/screenshotline.svg
+  name: Screenshotline Status
+  introTitle: "**Screenshotline** - live status"
+  introMessage: Checked every five minutes from GitHub's servers, not ours. **Screenshot rendering** takes a real capture; the others confirm each service is answering. [Back to screenshotline.com](https://screenshotline.com)
   navbar:
     - title: Status
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
-
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+    - title: screenshotline.com
+      href: https://screenshotline.com
+    - title: Docs
+      href: https://screenshotline.com/docs
